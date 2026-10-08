@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>British vs American English</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    background: #f6f7fb;
+    color: #172033;
+    line-height: 1.6;
+}
+
+/* NAVIGATION */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+    background: rgba(15, 23, 42, 0.88);
+    backdrop-filter: blur(15px);
+
+    padding: 15px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: white;
+    font-weight: 800;
+    font-size: 19px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    opacity: .85;
+}
+
+.nav-links a:hover {
+    opacity: 1;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 120px 20px 70px;
+
+    background:
+        radial-gradient(circle at 20% 20%, rgba(239,68,68,.35), transparent 30%),
+        radial-gradient(circle at 80% 30%, rgba(59,130,246,.35), transparent 30%),
+        linear-gradient(135deg,#0f172a,#172554,#1d4ed8);
+
+    color: white;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 900px;
+    animation: appear 1s ease;
+}
+
+.flags {
+    font-size: 75px;
+    margin-bottom: 15px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 8vw, 75px);
+    line-height: 1.05;
+    margin-bottom: 25px;
+    font-weight: 900;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg,#fff,#bfdbfe);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    font-size: 20px;
+    max-width: 700px;
+    margin: auto;
+    opacity: .9;
+}
+
+.hero-button {
+    display: inline-block;
+    margin-top: 35px;
+
+    padding: 15px 30px;
+
+    background: white;
+    color: #1d4ed8;
+
+    border-radius: 50px;
+
+    text-decoration: none;
+    font-weight: 800;
+
+    transition: .3s;
+}
+
+.hero-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,.25);
+}
+
+/* SECTIONS */
+
+section {
+    max-width: 1150px;
+    margin: auto;
+    padding: 90px 6%;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.section-description {
+    max-width: 700px;
+    text-align: center;
+    margin: 0 auto 50px;
+    color: #64748b;
+}
+
+/* INTRO CARDS */
+
+.two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.country-card {
+    padding: 35px;
+
+    border-radius: 25px;
+
+    background: white;
+
+    box-shadow: 0 15px 40px rgba(15,23,42,.08);
+
+    transition: .35s;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.country-card:hover {
+    transform: translateY(-8px);
+}
+
+.country-card::before {
+    content: "";
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 5px;
+
+    background: #2563eb;
+}
+
+.country-card:first-child::before {
+    background: #dc2626;
+}
+
+.country-flag {
+    font-size: 55px;
+}
+
+.country-card h3 {
+    font-size: 28px;
+    margin: 15px 0;
+}
+
+/* COMPARISON */
+
+.comparison {
+    background: white;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(15,23,42,.08);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th {
+    background: #172554;
+    color: white;
+    padding: 20px;
+}
+
+.table td {
+    padding: 18px;
+    text-align: center;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.table tr:hover {
+    background: #f8fafc;
+}
+
+.uk {
+    color: #b91c1c;
+    font-weight: 800;
+}
+
+.us {
+    color: #1d4ed8;
+    font-weight: 800;
+}
+
+/* SPELLING */
+
+.spelling-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.spelling {
+    padding: 30px;
+    border-radius: 25px;
+    color: white;
+}
+
+.spelling.uk-box {
+    background: linear-gradient(135deg,#991b1b,#ef4444);
+}
+
+.spelling.us-box {
+    background: linear-gradient(135deg,#1e3a8a,#2563eb);
+}
+
+.word {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 12px 0;
+
+    border-bottom: 1px solid rgba(255,255,255,.25);
+}
+
+/* HISTORY */
+
+.history {
+    display: grid;
+    gap: 20px;
+}
+
+.history-card {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+
+    background: white;
+    padding: 25px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 30px rgba(15,23,42,.07);
+
+    transition: .3s;
+}
+
+.history-card:hover {
+    transform: translateX(7px);
+}
+
+.history-number {
+    min-width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #2563eb;
+    color: white;
+
+    border-radius: 50%;
+
+    font-weight: 900;
+    font-size: 20px;
+}
+
+/* FACTS */
+
+.fact-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.fact {
+    background: white;
+    padding: 30px;
+    border-radius: 22px;
+
+    box-shadow: 0 10px 30px rgba(15,23,42,.07);
+
+    transition: .3s;
+}
+
+.fact:hover {
+    transform: translateY(-6px);
+}
+
+.fact-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+/* PROJECT */
+
+.project-result {
+    background: linear-gradient(135deg,#172554,#2563eb);
+    color: white;
+
+    padding: 50px;
+    border-radius: 30px;
+
+    text-align: center;
+
+    box-shadow: 0 20px 50px rgba(37,99,235,.25);
+}
+
+.project-result h2 {
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+/* QUIZ */
+
+.quiz-container {
+    background: #111827;
+    color: white;
+
+    padding: 40px;
+
+    border-radius: 30px;
+
+    max-width: 800px;
+    margin: auto;
+
+    box-shadow: 0 20px 50px rgba(15,23,42,.2);
+}
+
+.question {
+    margin-bottom: 35px;
+}
+
+.question h3 {
+    margin-bottom: 15px;
+}
+
+.answer {
+    width: 100%;
+
+    padding: 15px;
+
+    margin: 7px 0;
+
+    border: none;
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    background: white;
+    color: #172033;
+
+    font-size: 16px;
+
+    transition: .2s;
+}
+
+.answer:hover {
+    background: #dbeafe;
+    transform: translateX(4px);
+}
+
+.answer.correct {
+    background: #86efac;
+}
+
+.answer.wrong {
+    background: #fca5a5;
+}
+
+#quizResult {
+    text-align: center;
+
+    font-size: 23px;
+    font-weight: 800;
+
+    margin-top: 20px;
+}
+
+.restart {
+    display: none;
+
+    margin: 25px auto 0;
+
+    padding: 12px 25px;
+
+    border: none;
+    border-radius: 50px;
+
+    background: white;
+    color: #1d4ed8;
+
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+/* FOOTER */
+
+footer {
+    background: #0f172a;
+    color: white;
+
+    text-align: center;
+
+    padding: 45px 20px;
+}
+
+footer p {
+    opacity: .75;
+    margin-top: 7px;
+}
+
+/* ANIMATION */
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:750px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    .hero {
+        min-height: 90vh;
+    }
+
+    .flags {
+        font-size: 55px;
+    }
+
+    .hero p {
+        font-size: 17px;
+    }
+
+    section {
+        padding: 65px 5%;
+    }
+
+    .section-title {
+        font-size: 31px;
+    }
+
+    .two-columns,
+    .spelling-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .fact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .comparison {
+        overflow-x: auto;
+    }
+
+    .table {
+        min-width: 600px;
+    }
+
+    .quiz-container {
+        padding: 25px 18px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+    <div class="logo">
+        🇬🇧 × 🇺🇸 English
+    </div>
+
+    <div class="nav-links">
+        <a href="#about">О проекте</a>
+        <a href="#words">Слова</a>
+        <a href="#history">История</a>
+        <a href="#quiz">Тест</a>
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<header class="hero">
+
+    <div class="hero-content">
+
+        <div class="flags">
+            🇬🇧 🇺🇸
+        </div>
+
+        <h1>
+            <span class="gradient-text">
+                British vs American English
+            </span>
+        </h1>
+
+        <p>
+            Почему британцы и американцы говорят
+            на «одном», но разном английском?
+        </p>
+
+        <a href="#about" class="hero-button">
+            Исследовать различия ↓
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+    <h2 class="section-title">
+        Один язык — два варианта
+    </h2>
+
+    <p class="section-description">
+        Британский и американский английский происходят
+        от одного языка, однако история, культура и география
+        привели к появлению заметных различий.
+    </p>
+
+
+    <div class="two-columns">
+
+        <div class="country-card">
+
+            <div class="country-flag">
+                🇬🇧
+            </div>
+
+            <h3>
+                British English
+            </h3>
+
+            <p>
+                Вариант английского языка,
+                который используется в Великобритании.
+                Именно его часто называют
+                британским английским.
+            </p>
+
+        </div>
+
+
+        <div class="country-card">
+
+            <div class="country-flag">
+                🇺🇸
+            </div>
+
+            <h3>
+                American English
+            </h3>
+
+            <p>
+                Вариант английского языка,
+                сформировавшийся в США и получивший
+                собственные особенности.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- WORDS -->
+
+<section id="words">
+
+    <h2 class="section-title">
+        🇬🇧 vs 🇺🇸
+    </h2>
+
+    <p class="section-description">
+        Одно значение может иметь разные слова
+        в Великобритании и США.
+    </p>
+
+
+    <div class="comparison">
+
+        <table class="table">
+
+            <tr>
+                <th>🇬🇧 British</th>
+                <th>Значение</th>
+                <th>🇺🇸 American</th>
+            </tr>
+
+            <tr>
+                <td class="uk">flat</td>
+                <td>квартира</td>
+                <td class="us">apartment</td>
+            </tr>
+
+            <tr>
+                <td class="uk">lift</td>
+                <td>лифт</td>
+                <td class="us">elevator</td>
+            </tr>
+
+            <tr>
+                <td class="uk">holiday</td>
+                <td>отпуск / каникулы</td>
+                <td class="us">vacation</td>
+            </tr>
+
+            <tr>
+                <td class="uk">lorry</td>
+                <td>грузовик</td>
+                <td class="us">truck</td>
+            </tr>
+
+            <tr>
+                <td class="uk">petrol</td>
+                <td>бензин</td>
+                <td class="us">gas</td>
+            </tr>
+
+            <tr>
+                <td class="uk">autumn</td>
+                <td>осень</td>
+                <td class="us">fall</td>
+            </tr>
+
+            <tr>
+                <td class="uk">biscuit</td>
+                <td>печенье</td>
+                <td class="us">cookie</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- SPELLING -->
+
+<section>
+
+    <h2 class="section-title">
+        ✍️ Правописание
+    </h2>
+
+    <p class="section-description">
+        Некоторые слова отличаются всего одной буквой.
+    </p>
+
+
+    <div class="spelling-grid">
+
+        <div class="spelling uk-box">
+
+            <h2>🇬🇧 British English</h2>
+
+            <div class="word">
+                <span>colour</span>
+                <span>цвет</span>
+            </div>
+
+            <div class="word">
+                <span>favourite</span>
+                <span>любимый</span>
+            </div>
+
+            <div class="word">
+                <span>centre</span>
+                <span>центр</span>
+            </div>
+
+            <div class="word">
+                <span>travelling</span>
+                <span>путешествие</span>
+            </div>
+
+        </div>
+
+
+        <div class="spelling us-box">
+
+            <h2>🇺🇸 American English</h2>
+
+            <div class="word">
+                <span>color</span>
+                <span>цвет</span>
+            </div>
+
+            <div class="word">
+                <span>favorite</span>
+                <span>любимый</span>
+            </div>
+
+            <div class="word">
+                <span>center</span>
+                <span>центр</span>
+            </div>
+
+            <div class="word">
+                <span>traveling</span>
+                <span>путешествие</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- HISTORY -->
+
+<section id="history">
+
+    <h2 class="section-title">
+        📜 Почему появились различия?
+    </h2>
+
+    <p class="section-description">
+        Это произошло не за один день. Различия формировались
+        постепенно на протяжении нескольких столетий.
+    </p>
+
+
+    <div class="history">
+
+        <div class="history-card">
+
+            <div class="history-number">1</div>
+
+            <div>
+                <h3>
+                    Английский пришёл в Северную Америку
+                </h3>
+
+                <p>
+                    Английские поселенцы принесли свой язык
+                    в Северную Америку.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="history-card">
+
+            <div class="history-number">2</div>
+
+            <div>
+                <h3>
+                    Язык начал развиваться отдельно
+                </h3>
+
+                <p>
+                    Географическое расстояние между
+                    Великобританией и Америкой усиливало различия.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="history-card">
+
+            <div class="history-number">3</div>
+
+            <div>
+                <h3>
+                    Появились новые реалии
+                </h3>
+
+                <p>
+                    Американская культура и новые предметы
+                    способствовали появлению новых слов.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="history-card">
+
+            <div class="history-number">4</div>
+
+            <div>
+                <h3>
+                    Сформировались разные нормы
+                </h3>
+
+                <p>
+                    Постепенно различия появились в лексике,
+                    произношении, орфографии и некоторых
+                    грамматических особенностях.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FACTS -->
+
+<section>
+
+    <h2 class="section-title">
+        💡 Интересные факты
+    </h2>
+
+    <div class="fact-grid">
+
+        <div class="fact">
+
+            <div class="fact-icon">🌎</div>
+
+            <h3>
+                Это один язык
+            </h3>
+
+            <p>
+                British English и American English —
+                не два разных языка, а два варианта английского.
+            </p>
+
+        </div>
+
+
+        <div class="fact">
+
+            <div class="fact-icon">🎬</div>
+
+            <h3>
+                СМИ влияют на язык
+            </h3>
+
+            <p>
+                Фильмы, сериалы, музыка и интернет
+                помогают словам распространяться между странами.
+            </p>
+
+        </div>
+
+
+        <div class="fact">
+
+            <div class="fact-icon">🗣️</div>
+
+            <h3>
+                Отличается произношение
+            </h3>
+
+            <p>
+                Одни и те же слова могут звучать
+                немного по-разному в разных вариантах английского.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROJECT RESULT -->
+
+<section>
+
+    <div class="project-result">
+
+        <h2>
+            🔎 Что показало исследование?
+        </h2>
+
+        <p>
+            Британский и американский английский имеют
+            общую основу, но развивались в разных исторических
+            и культурных условиях.
+        </p>
+
+        <br>
+
+        <p>
+            Поэтому различия между ними естественны:
+            они встречаются в словах, написании,
+            произношении и некоторых языковых правилах.
+        </p>
+
+        <br>
+
+        <strong>
+            Главное: нельзя сказать, что один вариант
+            «правильнее» другого.
+        </strong>
+
+    </div>
+
+</section>
+
+
+<!-- QUIZ -->
+
+<section id="quiz">
+
+    <h2 class="section-title">
+        🎮 Проверь себя
+    </h2>
+
+    <p class="section-description">
+        Ответь на 10 вопросов и узнай,
+        насколько хорошо ты различаешь British и American English.
+    </p>
+
+
+    <div class="quiz-container">
+
+        <!-- 1 -->
+
+        <div class="question">
+
+            <h3>
+                1. Как британцы чаще называют лифт?
+            </h3>
+
+            <button class="answer" onclick="answer(this,true)">
+                lift
+            </button>
+
+            <button class="answer" onclick="answer(this,false)">
+                elevator
+            </button>
+
+        </div>
+
+
+        <!-- 2 -->
+
+        <div class="question">
+
+            <h3>
+                2. Как американцы чаще называют квартиру?
+            </h3>
+
+            <button class="answer" onclick="answer(this,false)">
+                flat
+            </button>
+
+            <button class="answer" onclick="answer(this,true)">
+                apartment
+            </button>
+
+        </div>
+
+
+        <!-- 3 -->
+
+        <div class="question">
+
+            <h3>
+                3. Какое написание характерно для British English?
+            </h3>
+
+            <button class="answer" onclick="answer(this,true)">
+                colour
+            </button>
+
+            <button class="answer" onclick="answer(this,false)">
+                color
+            </button>
+
+        </div>
+
+
+        <!-- 4 -->
+
+        <div class="question">
+
+            <h3>
+                4. Как американцы называют грузовик?
+            </h3>
+
+            <button class="answer" onclick="answer(this,true)">
+                truck
+            </button>
+
+            <button class="answer" onclick="answer(this,false)">
+                lorry
+            </button>
+
+        </div>
+
+
+        <!-- 5 -->
+
+        <div class="question">
+
+            <h3>
+                5. Как британцы обычно называют бензин?
+            </h3>
+
+            <button class="answer" onclick="answer(this,true)">
+                petrol
+            </button>
+
+            <button class="answer" onclick="answer(this,false)">
+                gas
+            </button>
+
+        </div>
+
+
+        <!-- 6 -->
+
+        <div class="question">
+
+            <h3>
+                6. Какой вариант чаще используется в США?
+            </h3>
+
+            <button class="answer" onclick="answer(this,false)">
+                favourite
+            </button>
+
+            <button class="answer" onclick="answer(this,true)">
+                favorite
+            </button>
+
+        </div>
+
+
+        <!-- 7 -->
+
+        <div class="question">
+
+            <h3>
+                7. Как британцы называют осень?
+            </h3>
+
+            <button class="answer" onclick="answer(this,true)">
+                autumn
+            </button>
+
+            <button class="answer" onclick="answer(this,false)">
+                fall
+            </button>
+
+        </div>
+
+
+        <!-- 8 -->
+
+        <div class="question">
+
+            <h3>
+                8. Как американцы называют печенье?
+            </h3>
+
+            <button class="answer" onclick="answer(this,false)">
+                biscuit
+            </button>
+
+            <button class="answer" onclick="answer(this,true)">
+                cookie
+            </button>
+
+        </div>
+
+
+        <!-- 9 -->
+
+        <div class="question">
+
+            <h3>
+                9. Какое написание характерно для США?
+            </h3>
+
+            <button class="answer" onclick="answer(this,true)">
+                center
+            </button>
+
+            <button class="answer" onclick="answer(this,false)">
+                centre
+            </button>
+
+        </div>
+
+
+        <!-- 10 -->
+
+        <div class="question">
+
+            <h3>
+                10. British и American English — это...
+            </h3>
+
+            <button class="answer" onclick="answer(this,true)">
+                два варианта одного языка
+            </button>
+
+            <button class="answer" onclick="answer(this,false)">
+                два совершенно разных языка
+            </button>
+
+        </div>
+
+
+        <div id="quizResult">
+            Ответь на вопросы!
+        </div>
+
+        <button class="restart" id="restart" onclick="location.reload()">
+            Пройти тест ещё раз
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <h3>
+        🇬🇧 British vs American English 🇺🇸
+    </h3>
+
+    <p>
+        Индивидуальный проект • 9 класс • 2026
+    </p>
+
+    <p>
+        Исследование различий между двумя вариантами английского языка
+    </p>
+
+</footer>
+
+
+<script>
+
+let score = 0;
+let total = 0;
+
+function answer(button, correct) {
+
+    if (button.parentElement.dataset.done === "true") {
+        return;
+    }
+
+    button.parentElement.dataset.done = "true";
+
+    total++;
+
+    if (correct) {
+
+        score++;
+
+        button.classList.add("correct");
+
+    } else {
+
+        button.classList.add("wrong");
+
+    }
+
+    document.getElementById("quizResult").innerHTML =
+        "Результат: " + score + " / " + total;
+
+    if (total === 10) {
+
+        let percent = score * 10;
+
+        let message = "";
+
+        if (score >= 9) {
+            message = "🏆 Отлично! Ты прекрасно различаешь варианты английского!";
+        }
+
+        else if (score >= 7) {
+            message = "🌟 Очень хорошо! Ты хорошо знаешь различия.";
+        }
+
+        else if (score >= 5) {
+            message = "👍 Неплохо! Но есть что повторить.";
+        }
+
+        else {
+            message = "📚 Стоит ещё немного изучить British и American English.";
+        }
+
+        document.getElementById("quizResult").innerHTML =
+            "Результат: " + score + " / 10<br><br>" +
+            percent + "%<br>" +
+            message;
+
+        document.getElementById("restart").style.display = "block";
+
+    }
+
+}
+
+</script>
+
+
+</body>
+</html>
